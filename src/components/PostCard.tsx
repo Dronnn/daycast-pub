@@ -1,0 +1,74 @@
+import { Link } from "react-router-dom";
+import ChannelIcon from "./ChannelIcon";
+import type { PublishedPost } from "../types";
+
+const CHANNEL_NAMES: Record<string, string> = {
+  blog: "Blog",
+  diary: "Personal Diary",
+  tg_personal: "Telegram Personal",
+  tg_public: "Telegram Public",
+  twitter: "Twitter / X",
+};
+
+function formatDate(iso: string): string {
+  const d = new Date(iso + "T12:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+export default function PostCard({ post, index }: { post: PublishedPost; index: number }) {
+  return (
+    <Link
+      to={`/post/${post.slug}`}
+      className="fade-in"
+      style={{
+        display: "block",
+        background: "var(--surface)",
+        borderRadius: "var(--radius-card)",
+        border: "0.5px solid var(--separator)",
+        boxShadow: "var(--card-shadow)",
+        overflow: "hidden",
+        transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+        textDecoration: "none",
+        color: "inherit",
+        animationDelay: `${index * 0.06}s`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-3px)";
+        e.currentTarget.style.boxShadow = "var(--hover-shadow)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "none";
+        e.currentTarget.style.boxShadow = "var(--card-shadow)";
+      }}
+    >
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "20px 24px 0" }}>
+        <ChannelIcon channelId={post.channel_id} size={40} />
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "-0.02em" }}>
+            {CHANNEL_NAMES[post.channel_id] ?? post.channel_id}
+          </div>
+          <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 1 }}>
+            {formatDate(post.date)} &middot; {post.style} &middot; {post.language.toUpperCase()}
+          </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div style={{ padding: "14px 24px 20px" }}>
+        <p style={{
+          fontSize: 14.5,
+          lineHeight: 1.65,
+          color: "var(--text2)",
+          whiteSpace: "pre-wrap",
+          display: "-webkit-box",
+          WebkitLineClamp: 6,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+        }}>
+          {post.text}
+        </p>
+      </div>
+    </Link>
+  );
+}
