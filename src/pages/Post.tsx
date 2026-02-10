@@ -118,17 +118,6 @@ export default function Post() {
         </button>
       </div>
 
-      {/* Source preview */}
-      {post.input_items_preview.length > 0 && (
-        <div style={{ marginTop: 40, padding: 20, background: "var(--surface)", borderRadius: 16, border: "0.5px solid var(--separator)" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>
-            Sources
-          </div>
-          {post.input_items_preview.map((item, i) => (
-            <p key={i} style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.5, marginBottom: 6 }}>{item}</p>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
