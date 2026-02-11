@@ -13,9 +13,10 @@ Built with React 19, TypeScript, and Vite.
 ## Features
 
 - **Infinite scroll** — cursor-based pagination with IntersectionObserver.
-- **Channel filters** — filter posts by channel (Blog, Diary, Telegram, Twitter/X).
+- **Channel filters** — filter posts by channel (Blog, Diary, Telegram, Twitter/X). Input-based posts shown as "Personal".
 - **Calendar heatmap** — 7-column grid showing days with published posts.
 - **Dark mode** — CSS variables with `prefers-color-scheme` support.
+- **Two post types** — supports both AI-generated channel posts and directly published input items (shown with "Personal" label, nullable channel/style/language).
 - **No authentication** — reads from the public API endpoints only.
 
 ## Tech Stack

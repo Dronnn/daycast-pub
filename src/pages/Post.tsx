@@ -63,7 +63,7 @@ export default function Post() {
 
   return (
     <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px 80px" }}>
-      <SEO title={`${CHANNEL_NAMES[post.channel_id] ?? post.channel_id} — ${post.date}`} description={post.text.slice(0, 160)} />
+      <SEO title={`${post.channel_id ? (CHANNEL_NAMES[post.channel_id] ?? post.channel_id) : "Personal"} — ${post.date}`} description={post.text.slice(0, 160)} />
 
       {/* Back */}
       <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 600, color: "var(--blue)", marginBottom: 24 }}>
@@ -78,10 +78,10 @@ export default function Post() {
         <ChannelIcon channelId={post.channel_id} size={48} />
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800, letterSpacing: "-0.03em" }}>
-            {CHANNEL_NAMES[post.channel_id] ?? post.channel_id}
+            {post.channel_id ? (CHANNEL_NAMES[post.channel_id] ?? post.channel_id) : "Personal"}
           </h1>
           <p style={{ fontSize: 13, color: "var(--text3)" }}>
-            {formatDate(post.date)} &middot; {post.style} &middot; {post.language.toUpperCase()}
+            {formatDate(post.date)}{post.style ? ` · ${post.style}` : ""}{post.language ? ` · ${post.language.toUpperCase()}` : ""}
           </p>
         </div>
       </div>

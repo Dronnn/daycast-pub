@@ -1,13 +1,14 @@
 export interface PublishedPost {
   id: string;
   slug: string;
-  channel_id: string;
-  style: string;
-  language: string;
+  channel_id: string | null;
+  style: string | null;
+  language: string | null;
   text: string;
   date: string;
   published_at: string;
   input_items_preview: string[];
+  source: string;
 }
 
 export interface PostListResponse {

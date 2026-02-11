@@ -14,9 +14,9 @@ const CHANNEL_LETTERS: Record<string, string> = {
   twitter: "X",
 };
 
-export default function ChannelIcon({ channelId, size = 40 }: { channelId: string; size?: number }) {
-  const [c1, c2] = CHANNEL_GRADIENTS[channelId] ?? ["#888", "#aaa"];
-  const letter = CHANNEL_LETTERS[channelId] ?? channelId[0]?.toUpperCase() ?? "?";
+export default function ChannelIcon({ channelId, size = 40 }: { channelId: string | null; size?: number }) {
+  const [c1, c2] = (channelId && CHANNEL_GRADIENTS[channelId]) || ["#888", "#aaa"];
+  const letter = (channelId && CHANNEL_LETTERS[channelId]) || channelId?.[0]?.toUpperCase() || "P";
 
   return (
     <div

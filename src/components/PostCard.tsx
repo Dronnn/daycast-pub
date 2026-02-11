@@ -46,10 +46,10 @@ export default function PostCard({ post, index }: { post: PublishedPost; index: 
         <ChannelIcon channelId={post.channel_id} size={40} />
         <div>
           <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "-0.02em" }}>
-            {CHANNEL_NAMES[post.channel_id] ?? post.channel_id}
+            {post.channel_id ? (CHANNEL_NAMES[post.channel_id] ?? post.channel_id) : "Personal"}
           </div>
           <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 1 }}>
-            {formatDate(post.date)} &middot; {post.style} &middot; {post.language.toUpperCase()}
+            {formatDate(post.date)}{post.style ? ` · ${post.style}` : ""}{post.language ? ` · ${post.language.toUpperCase()}` : ""}
           </div>
         </div>
       </div>
