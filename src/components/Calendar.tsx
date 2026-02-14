@@ -37,7 +37,7 @@ export default function Calendar({ onSelectDate }: { onSelectDate: (date: string
   const monthLabel = new Date(year, month - 1).toLocaleString("en-US", { month: "long", year: "numeric" });
 
   return (
-    <div style={{ background: "var(--surface)", borderRadius: 20, padding: 20, border: "0.5px solid var(--separator)" }}>
+    <div style={{ background: "var(--surface)", borderRadius: "var(--radius-lg)", padding: 20, border: "1px solid var(--border)", boxShadow: "var(--glow-card)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
         <button onClick={prev} style={{ fontSize: 18, color: "var(--text2)", padding: 4 }}>&lsaquo;</button>
         <span style={{ fontSize: 14, fontWeight: 700 }}>{monthLabel}</span>

@@ -23,7 +23,7 @@ export default function Archive() {
     <div style={{ maxWidth: 720, margin: "0 auto", padding: "40px 24px 80px" }}>
       <SEO title="Archive" />
 
-      <h1 style={{ fontSize: 32, fontWeight: 900, letterSpacing: "-0.04em", marginBottom: 8 }}>Archive</h1>
+      <h1 style={{ fontSize: 32, fontWeight: 900, letterSpacing: "-0.04em", marginBottom: 8, fontFamily: "var(--font-heading)" }}>Archive</h1>
       <p style={{ fontSize: 15, color: "var(--text2)", marginBottom: 32 }}>Browse all published content by month.</p>
 
       {/* Stats */}
@@ -34,7 +34,7 @@ export default function Archive() {
             { label: "Days", value: stats.total_days },
             { label: "Channels", value: stats.channels_used.length },
           ].map((s) => (
-            <div key={s.label} style={{ padding: "16px 24px", background: "var(--surface)", borderRadius: 16, border: "0.5px solid var(--separator)", minWidth: 100 }}>
+            <div key={s.label} style={{ padding: "16px 24px", background: "var(--surface)", borderRadius: 16, border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)", minWidth: 100 }}>
               <div style={{ fontSize: 28, fontWeight: 800, letterSpacing: "-0.03em" }}>{s.value}</div>
               <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{s.label}</div>
             </div>
@@ -64,13 +64,21 @@ export default function Archive() {
                 padding: "16px 20px",
                 background: "var(--surface)",
                 borderRadius: 14,
-                border: "0.5px solid var(--separator)",
+                border: "1px solid var(--border)",
                 textDecoration: "none",
                 color: "var(--text)",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--surface-hover)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "var(--surface)"; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--surface-hover)";
+                e.currentTarget.style.boxShadow = "var(--glow-card-hover)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--surface)";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "none";
+              }}
             >
               <span style={{ fontWeight: 600 }}>{m.label}</span>
               <span style={{

@@ -2,7 +2,7 @@
 
 Public blog site for DayCast — displays AI-generated posts published from the main app.
 
-Built with React 19, TypeScript, and Vite.
+Built with React 19, TypeScript, Vite, and Framer Motion.
 
 ## Pages
 
@@ -15,7 +15,8 @@ Built with React 19, TypeScript, and Vite.
 - **Infinite scroll** — cursor-based pagination with IntersectionObserver.
 - **Channel filters** — filter posts by channel (Blog, Diary, Telegram, Twitter/X). Input-based posts shown as "Personal".
 - **Calendar heatmap** — 7-column grid showing days with published posts.
-- **Dark mode** — CSS variables with `prefers-color-scheme` support.
+- **Design System V2** — synced with DayCast Web (Apple Premium + Futuristic + Warm). Glassmorphism header, gradient mesh background, glow effects on cards, spring animations via Framer Motion.
+- **Dark mode** — CSS variables with `prefers-color-scheme` support. Full dark mode token set synced with web admin.
 - **Two post types** — supports both AI-generated channel posts and directly published input items (shown with "Personal" label, nullable channel/style/language).
 - **No authentication** — reads from the public API endpoints only.
 
@@ -25,7 +26,8 @@ Built with React 19, TypeScript, and Vite.
 - **TypeScript**
 - **Vite 6** — dev server and production builds
 - **React Router 7** — client-side routing
-- **CSS** — custom styles with CSS variables, no framework
+- **Framer Motion 12** — spring physics animations
+- **CSS** — Design System V2 with CSS variables, glassmorphism, glow effects
 
 ## Project Structure
 

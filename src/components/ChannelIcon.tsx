@@ -33,6 +33,7 @@ export default function ChannelIcon({ channelId, size = 40 }: { channelId: strin
         fontWeight: 900,
         letterSpacing: "-0.02em",
         flexShrink: 0,
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
       }}
     >
       {letter}

@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { usePosts } from "../hooks/usePosts";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import PostCard from "../components/PostCard";
@@ -56,14 +57,30 @@ export default function Feed() {
       <SEO />
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         {/* Hero */}
-        <div style={{ textAlign: "center", padding: "60px 0 40px" }}>
-          <h1 style={{ fontSize: 44, fontWeight: 900, letterSpacing: "-0.05em", lineHeight: 1.05, marginBottom: 12 }}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          style={{ textAlign: "center", padding: "60px 0 40px" }}
+        >
+          <h1 style={{
+            fontSize: 44,
+            fontWeight: 900,
+            letterSpacing: "-0.05em",
+            lineHeight: 1.05,
+            marginBottom: 12,
+            fontFamily: "var(--font-heading)",
+            background: "var(--gradient-brand)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}>
             DayCast Blog
           </h1>
           <p style={{ fontSize: 18, color: "var(--text2)", maxWidth: 440, margin: "0 auto" }}>
             AI-generated content from daily thoughts, links, and ideas.
           </p>
-        </div>
+        </motion.div>
 
         <div style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
           {/* Main feed */}
@@ -90,7 +107,7 @@ export default function Feed() {
             {loading && (
               <div style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: 20 }}>
                 {[0, 1, 2].map((i) => (
-                  <div key={i} className="skeleton" style={{ height: 180, borderRadius: "var(--radius-card)" }} />
+                  <div key={i} className="skeleton" style={{ height: 180, borderRadius: "var(--radius-xl)" }} />
                 ))}
               </div>
             )}

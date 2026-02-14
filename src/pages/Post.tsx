@@ -66,7 +66,7 @@ export default function Post() {
       <SEO title={`${post.channel_id ? (CHANNEL_NAMES[post.channel_id] ?? post.channel_id) : "Personal"} — ${post.date}`} description={post.text.slice(0, 160)} />
 
       {/* Back */}
-      <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 600, color: "var(--blue)", marginBottom: 24 }}>
+      <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 600, color: "var(--blue)", marginBottom: 24, transition: "color var(--duration-normal) var(--ease-smooth)" }}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="15 18 9 12 15 6" />
         </svg>
@@ -102,6 +102,14 @@ export default function Post() {
       <div style={{ display: "flex", gap: 10 }}>
         <button
           onClick={handleCopyLink}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = "var(--glow-card-hover)";
+            e.currentTarget.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+            e.currentTarget.style.transform = "none";
+          }}
           style={{
             padding: "9px 20px",
             borderRadius: 24,
@@ -109,8 +117,8 @@ export default function Post() {
             fontWeight: 600,
             background: "var(--surface)",
             color: "var(--text2)",
-            border: "0.5px solid var(--separator)",
-            boxShadow: "var(--card-shadow)",
+            border: "1px solid var(--border)",
+            boxShadow: "var(--shadow-sm)",
             transition: "all 0.2s",
           }}
         >
