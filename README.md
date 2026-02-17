@@ -83,6 +83,13 @@ Dev server runs on port 5174. Configure API URL in `.env` (see `.env.example`).
 
 Hosted on the production Mac (192.168.31.131:3000) via `serve` static server, managed by launchd (`com.daycast.pub`).
 
+Public URL: `https://pubdaycast.mrmaier.com` (via Cloudflare Tunnel).
+
+API URL is configured via `.env.production`:
+```
+VITE_API_URL=https://daycast.mrmaier.com
+```
+
 ```bash
 npm run build
 # dist/ is copied to /Users/andrewmaier/daycast/pub-dist/ on the Mac
